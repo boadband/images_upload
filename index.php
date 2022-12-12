@@ -45,16 +45,28 @@ session_start();
             <?php } ?>
         </div>
 <div class="row g-2">
+          <!-- ส่วนการแสดงผล-->
             <?php 
+            // ใช้คำสั่ง query = ตัวแปรเชื่อมฐานข้อมูล
+            // แสดงผลใช้คำสั่ง SELECT * แสดงข้อมูลใน ตาราง images โดยเรียงจากไฟล์ล่าสุดที่อัพ DESC
                 $query = $conn->query("SELECT * FROM images ORDER BY uploaded_on DESC");?>
-            <?php while ($row = $query->fetch(PDO::FETCH_ASSOC))  { ?>
+
+            <!-- ใช้คำสั่ง while เพื่อวนข้อมูลมาแสดงผล แบบ อาร์เร
+                $row = $query->fetch(PDO::FETCH_ASSOC จำนวนเเถวตามข้อมูลในฐานข้อมูล
+             -->
+           <?php while ($row = $query->fetch(PDO::FETCH_ASSOC))  { ?>
                 <?php    $imageURL = 'uploads/' . $row['file_name']; ?>
+                <!-- ส่วนการแสดงผล กำหนด ความกว่าง ยาว รูปภาพ-->
                 <div class="col-sm-6 col-lg-4 col-xl-3">
                 <div class="card shadow h-100">
                     <img src="<?php echo $imageURL ?>" alt="" width="100%" class="card-img">
                 </div>
             </div>
             <?php } ?>
+            
+            <!-- ส่วนการแสดงผล-->
+
+            <!-- มีปัญหา เพราะ ครูใช้ฐานข้อมูลแบบ PDO เเต่ ตัวอย่างใช้แบบ mysqli-->
                 <!-- if ($query-> PDO >1) {
                     while($row = $query->fetch(PDO::FETCH_ASSOC)) {
                         $imageURL = 'uploads/'.$row['file_name'];

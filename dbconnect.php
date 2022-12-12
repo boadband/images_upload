@@ -1,4 +1,10 @@
 <?php
+/*
+    ส่วนเชื่อมฐานข้อมูล
+    dsn ใช้เชื่อมฐานข้อมูล mysql:host=localhost; dbname=ชื่อฐานข้อมูล'
+    $name = 'root';
+    $password = '';
+ */
 $dsn = 'mysql:host=localhost;dbname=images_upload';
 $name = 'root';
 $password = '';
